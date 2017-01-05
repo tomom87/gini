@@ -22,10 +22,10 @@ Gini.index<-function( x, y,                    # 度数ベクトル
 # 両ベクトルの内積はローレンツ曲線の面積の2倍
     return((1-a%*%b))            　    # ジニ係数　1からベクトル内積を引く
 }
- 
-setwd("C:/Google ドライブ/R")
-d<-read.csv("data.csv", header=T)
-d <- d[order(d$YX),]					# 収入/人口（Y/X）でソート
+
+d <-read.csv("data.csv", header=T)
+d$order <- d$Y/d$X
+d <- d[order(d$order),]					# 収入/人口（Y/X）でソート
 attach(d)
- 
+
 Gini.index(X,Y)
